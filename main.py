@@ -1,39 +1,30 @@
+# I miss C-style syntax and idioms
+
 import random
 
 
-def user_input(die_side_count):
-    # How many sides the die should have, from 1 to 100
-    sides = range(1, 100)
-    for _, side in enumerate(sides):
-        if die_side_count == "4":  # Currently, set to 4 for testing. Want it to be the index of sides.
-            print(_)
-            print(type(_))
-            print(die_side_count)
-            print(type(die_side_count))
-            print("Made it here")
-            return int(die_side_count)
-        else:
-            print(_)
-            print(type(_))
-            print(die_side_count)
-            print(type(die_side_count))
-            print("Please enter a number from 1 to 100.")
-            raise SystemExit(1)
+def user_input(die_sides):
+    # How many sides the die should have, from 1 to 6
+    # Would rather user be able to select 1-100 for sides, and input be validated as such.
+    if die_sides.strip() in {"1", "2", "3", "4", "5", "6"}:
+        return int(die_sides)
+    else:
+        print("Please enter a number from 1 to 6.")
+        raise SystemExit(1)
 
 
-def roll_dice(dice_count):
+def roll_dice(die_count):
     # Rolls the die or dice
-    roll_results = []
-    for _ in range(dice_count):
-        roll = random.randint(1, dice_count)
-        roll_results.append(roll)
-    return roll_results
+    roll_output = []
+    for _ in range(die_count):
+        roll = random.randint(1, die_count)
+        roll_output.append(roll)
+    return roll_output
 
 
 # Ask how many of what side die to roll
 num_rolls = input("How many rolls will you be wanting? ")
-side_count = input("How many sides do you want to roll, from 1-100? ")
-num_dice = user_input(num_rolls)
-final_results = roll_dice(num_dice)
+dice_count = user_input(num_rolls)
+roll_results = roll_dice(dice_count)
 
-print(final_results)
+print(roll_results)
