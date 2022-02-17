@@ -5,7 +5,7 @@ def user_input(die_side_count):
     # How many sides the die should have, from 1 to 100
     sides = range(1, 100)
     for _, side in enumerate(sides):
-        if die_side_count == "4":
+        if die_side_count == "4":  # Currently, set to 4 for testing. Want it to be the index of sides.
             print(_)
             print(type(_))
             print(die_side_count)
